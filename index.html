@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BASM Museum</title>
+  <link rel="icon" href="https://freight.cargo.site/t/original/i/F2690278877539338581932419539605/Aug-23rd-Logo-1.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #fff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.5rem;
+      color: rgba(0,0,0,0.85);
+      font-weight: 400;
+      line-height: 1.2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: rgba(0,0,0,0.85); text-decoration: none; }
+    hr {
+      background: rgba(0,0,0,0.4);
+      border: 0; height: 1px; display: block;
+      margin-top: 0.8rem; margin-bottom: 0.8rem;
+    }
+    h1 {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 800;
+      margin: 0;
+      font-size: 7rem;
+      line-height: 0.85;
+      color: rgba(0,0,0,0.85);
+      letter-spacing: -0.01em;
+    }
+    .caption {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(0,0,0,0.85);
+      font-family: 'Work Sans', sans-serif;
+      line-height: 1.2;
+    }
+    .button-5-1 {
+      font-size: 2rem;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      color: rgba(0,0,0,0.85);
+      display: inline-block;
+      border: 0.2rem solid rgba(0,0,0,0.85);
+      padding: 0.7rem 1rem;
+      background: #ffffff;
+      filter: drop-shadow(0.3rem 0.3rem 0rem rgba(0,0,0,0.85));
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrapper { overflow: hidden; width: 100%; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { white-space: nowrap; }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SPLIT LAYOUT ── */
+    .split {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      min-height: calc(100vh - 2.8rem); /* subtract marquee height */
+    }
+
+    /* LEFT: backdrop image cycler */
+    .backdrop {
+      width: 51%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .backdrop img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    .backdrop img.active {
+      opacity: 1;
+    }
+
+    /* RIGHT: content */
+    .page-content {
+      flex: 1;
+      padding: 1rem;
+      padding-top: 0.6rem;
+      overflow-y: auto;
+    }
+
+    /* COLUMNS */
+    .column-set { display: flex; flex-direction: row; gap: 1rem; width: 100%; }
+    .column-unit { flex: 1; }
+    .col-3 { flex: 3; }
+    .col-9 { flex: 9; text-align: right; }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      .split { flex-direction: column; }
+      .backdrop { width: 100%; height: 60vw; position: relative; }
+      h1 { font-size: 4.7rem; }
+      body { font-size: 1.2rem; }
+      .column-set { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINȚĂ...DAR PE ÎNȚELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+      <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINȚĂ...DAR PE ÎNȚELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+    </div>
+  </div>
+
+  <div class="split">
+
+    <!-- LEFT COLUMN: cycling images -->
+    <div class="backdrop" id="backdrop">
+      <img src="Landing_Page-01.png" alt="Meet Pocket Lab - slide 1" class="active">
+      <img src="Landing_Page-02.png" alt="Meet Pocket Lab - slide 2">
+      <img src="Landing_Page-03.png" alt="Meet Pocket Lab - slide 3">
+    </div>
+
+    <!-- RIGHT COLUMN: text content -->
+    <div class="page-content">
+
+      <hr>
+      <br>
+      <h1 style="line-height: 0.85;">BASM</h1>
+      <br>
+      <hr>
+
+      <div class="column-set" style="gap:1rem;">
+        <div class="column-unit">
+          <b>Ce este BASM?</b> Bucharest Applied STEAM Museum. Metodologia STEAM – Știință, Tehnologie, Inginerie, Artă, Matematică – explică legăturile din lumea în care trăim. O lume în care oricine poate să învețe orice. Credem în magia fără egal a muzeelor de știință și că Bucureștiul are nevoie de unul modern acum, mai mult ca niciodată. De aceea ne dorim să îl fondăm!<br><br>
+          <span style="color:rgba(0,0,0,0.85);">
+            <b>Misiunea noastra?</b> Să stârnim curiozitatea, să murdărim tricourile și să înțepăm vârful degetelor… explorând știința, tehnologia, ingineria, arta și matematica prin bricolaj comunitar, experimentare liberă și cercetare fără teamă de eșec.<br>
+            <br>
+            <b>Ce este POCKET LAB?</b> Un dispozitiv dezvoltat de catre echipa BASM. Pocket Lab aduce laboratorul de științe în buzunarul fiecărui elev și transformă învățarea <br>
+            într-o experiență activă și inspirată din viețile lor.
+          </span><br>
+          <i><br>Îți mulțumim că ne ești alături! orice mod posibil, în povestea BASM, scrie-ne.<br></i>
+          <br>
+          <span class="button-5-1" style="background: rgb(150, 205, 181);">PLAY</span>
+          <br><br><br><br>
+          <b>Unde ne gasesti?</b><br>
+          Contacteaza-ne aici:<br><br>
+          <a href="mailto:team@bucharest-steam.com">✉ Email</a><br>
+          <a href="https://www.instagram.com/basm.museum/" target="_blank">◎ Instagram</a><br>
+          <br>
+        </div>
+      </div>
+
+      <div class="column-set">
+        <div class="column-unit col-3"></div>
+        <div class="column-unit col-9">
+          <a href="#">RO</a> / <a href="#english">EN</a>
+        </div>
+      </div>
+
+    </div><!-- end page-content -->
+  </div><!-- end split -->
+
+  <script>
+    // Cycle through the 3 backdrop images every 1 second
+    const images = document.querySelectorAll('#backdrop img');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 1000);
+  </script>
+
+</body>
+</html>
