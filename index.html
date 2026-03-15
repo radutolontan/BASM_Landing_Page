@@ -24,8 +24,8 @@
     @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .split { display: flex; flex-direction: row; flex: 1; min-height: 100vh; }
     .backdrop { width: 51%; flex-shrink: 0; position: relative; overflow: hidden; background: #f0f0f0; }
-    .backdrop img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; z-index: 0; }
-    .backdrop img.active { z-index: 2; }
+    .backdrop img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+    .backdrop img.active { display: block; }
     .page-content { flex: 1; padding: 1rem; padding-top: 0.6rem; overflow-y: auto; }
     .column-set { display: flex; flex-direction: row; gap: 1rem; width: 100%; }
     .column-unit { flex: 1; }
@@ -39,54 +39,48 @@
 <body>
   <div class="split">
     <div class="backdrop" id="backdrop">
-      <img src="Landing_Page-01.png" alt="Meet Pocket Lab - slide 1" class="active">
-      <img src="Landing_Page-02.png" alt="Meet Pocket Lab - slide 2">
-      <img src="Landing_Page-03.png" alt="Meet Pocket Lab - slide 3">
+      <img src="Landing_Page-01.png" alt="slide 1" class="active">
+      <img src="Landing_Page-02.png" alt="slide 2">
+      <img src="Landing_Page-03.png" alt="slide 3">
     </div>
-
     <div class="page-content">
       <div class="marquee-wrapper">
         <div class="marquee-track">
-          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINȚĂ...DAR PE ÎNȚELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
-          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINȚĂ...DAR PE ÎNȚELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINŢĂ...DAR PE ÎNŢELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVEYRONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>CA UN MUZEU DE ȘTIINŢĂ...DAR PE ÎNŢELESUL TUTUROR</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
         </div>
       </div>
       <hr><br>
       <h1 style="line-height: 0.85;">BASM</h1>
       <br><hr>
-
       <div class="column-set" style="gap:1rem;">
         <div class="column-unit">
-          <b>Cine este BASM?</b> Bucharest Applied STEAM Museum. Metodologia STEAM – Știință, Tehnologie, Inginerie, Artă, Matematică – explică legăturile din lumea în care trăim. O lume în care oricine poate să învețe orice. Credem în magia fără egal a muzeelor de știință și că Bucureștiul are nevoie de unul modern acum, mai mult ca niciodată. De aceea ne dorim să îl fondăm!<br><br>
-          <span style="color:rgba(0,0,0,0.85);">
-            <b>Misiunea noastră!</b> Să stârnim curiozitatea, să murdărim tricourile și să înțepăm vârful degetelor… explorând știința, tehnologia, ingineria, arta și matematica prin bricolaj comunitar, experimentare liberă și cercetare fără teamă de eșec.<br><br>
-            <b>Ce este POCKET LAB?</b> Un dispozitiv dezvoltat de către echipa BASM. Pocket Lab aduce laboratorul de științe în buzunarul fiecărui elev și transformă învățarea într-o experiență activă și inspirată din pasiunile lor.
-          </span><br>
-          <i><br>Dar nu putem face toate astea singuri.<br>
-          Dacă și tu crezi că suntem mai puternici împreună, te rugăm să ne scrii.</i>
+          <b>Cine este BASM?</b> Bucharest Applied STEAM Museum. Metodologia STEAM – Știinţă, Tehnologie, Inginerie, Artă, Matematică – explică legăturile din lumea în care trăim. O lume în care oricine poate să înveţe orice. Credem în magia fără egal a muzeelor de ştiinţă şi că Bucureştiul are nevoie de unul modern acum, mai mult ca niciodată. De aceea ne dorim să îl fondăm!<br><br>
+          <span style="color:rgba(0,0,0,0.85);"><b>Misiunea noastră!</b> Să stìrnim curiozitatea, să murdărim tricourile şi să întepăm vìrful degetelor… explorînd ştiinţa, tehnologia, ingineria, arta şi matematica prin bricolaj comunitar, experimentare liberă şi cercetare fără teamă de eşec.<br><br>
+          <b>Ce este POCKET LAB?</b> Un dispozitiv dezvoltat de către echipa BASM. Pocket Lab aduce laboratorul de ştiinţe în buzunarul fiecărui elev şi transformă învăţarea într-o experienţă activă şi inspirată din pasiunile lor.</span><br>
+          <i><br>Dar nu putem face toate astea singuri.<br>Dacă şi tu crezi că suntem mai puternici împreună, te rugăm să ne scrii.</i>
           <br><br>
           <a href="https://basmmuseum.substack.com/?utm_campaign=profile_chips" target="_blank"><span class="button-5-1" style="background: rgb(150, 205, 181);">PLAY</span></a>
           <br><br><br><br>
-          <b>Unde ne găsești?</b><br>
-          Contactează-ne aici:<br><br>
-          <a href="/cdn-cgi/l/email-protection#d5a1b0b4b895b7a0b6bdb4a7b0a6a1f8a6a1b0b4b8fbb6bab8">✉ Email</a><br>
-          <a href="https://www.instagram.com/basm.museum/" target="_blank">◎ Instagram</a><br>
-          <br>
+          <b>Unde ne găseşti?</b><br>Contactează-ne aici:<br><br>
+          <a href="mailto:team@bucharest-steam.com">✉ Email</a><br>
+          <a href="https://www.instagram.com/basm.museum/" target="_blank">◎ Instagram</a><br><br>
         </div>
       </div>
-
       <div class="column-set lang-switcher">
         <div class="column-unit col-3"></div>
-        <div class="column-unit col-9">
-          <a href="index.html" class="current">RO</a> / <a href="en.html">EN</a>
-        </div>
+        <div class="column-unit col-9"><a href="index.html" class="current">RO</a> / <a href="en.html">EN</a></div>
       </div>
     </div>
   </div>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const images = document.querySelectorAll('#backdrop img');
-    let current = 0;
-    setInterval(() => {
-      const next = (current + 1) % images.length;
-   
+  <script>
+    var imgs = document.querySelectorAll('#backdrop img');
+    var cur = 0;
+    setInterval(function() {
+      imgs[cur].classList.remove('active');
+      cur = (cur + 1) % imgs.length;
+      imgs[cur].classList.add('active');
+    }, 1500);
+  </script>
+</body>
+</html>
