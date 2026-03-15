@@ -83,7 +83,7 @@
       display: flex;
       flex-direction: row;
       flex: 1;
-      min-height: calc(100vh - 2.8rem); /* subtract marquee height */
+      min-height: calc(100vh - 2.8rem);
     }
 
     /* LEFT: backdrop image cycler */
@@ -92,6 +92,7 @@
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
+      background: #f0f0f0; /* fallback while images load */
     }
 
     .backdrop img {
@@ -99,12 +100,26 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
+      /* all images visible, stacked — active one on top */
+      opacity: 1;
+      z-index: 0;
+      transition: none;
     }
 
+    /* the incoming image fades in ON TOP of the current one */
     .backdrop img.active {
-      opacity: 1;
+      z-index: 2;
+    }
+
+    .backdrop img.fading-in {
+      z-index: 3;
+      opacity: 0;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     /* RIGHT: content */
@@ -187,17 +202,27 @@
         </div>
       </div>
 
-    </div><!-- end page-content -->
-  </div><!-- end split -->
+    </div>
+  </div>
 
   <script>
-    // Cycle through the 3 backdrop images every 1 second
     const images = document.querySelectorAll('#backdrop img');
     let current = 0;
+
     setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
+      const next = (current + 1) % images.length;
+
+      // Bring next image on top and fade it in
+      images[next].classList.add('fading-in');
+
+      // Once animation completes, clean up classes
+      images[next].addEventListener('animationend', () => {
+        images[current].classList.remove('active');
+        images[next].classList.remove('fading-in');
+        images[next].classList.add('active');
+        current = next;
+      }, { once: true });
+
     }, 1000);
   </script>
 
