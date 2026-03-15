@@ -26,8 +26,6 @@
     .backdrop { width: 51%; flex-shrink: 0; position: relative; overflow: hidden; background: #f0f0f0; }
     .backdrop img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; z-index: 0; }
     .backdrop img.active { z-index: 2; }
-    .backdrop img.fading-in { z-index: 3; opacity: 0; animation: fadeIn 0.4s ease-in-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .page-content { flex: 1; padding: 1rem; padding-top: 0.6rem; overflow-y: auto; }
     .column-set { display: flex; flex-direction: row; gap: 1rem; width: 100%; }
     .column-unit { flex: 1; }
@@ -39,7 +37,6 @@
   </style>
 </head>
 <body>
-
   <div class="split">
     <div class="backdrop" id="backdrop">
       <img src="Landing_Page-01.png" alt="Meet Pocket Lab - slide 1" class="active">
@@ -48,12 +45,12 @@
     </div>
 
     <div class="page-content">
-<div class="marquee-wrapper">
-    <div class="marquee-track">
-      <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVERYONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>A SCIENCE MUSEUM FOR THE CURIOUS MIND</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
-      <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVERYONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>A SCIENCE MUSEUM FOR THE CURIOUS MIND</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
-    </div>
-  </div>
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVERYONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>A SCIENCE MUSEUM FOR THE CURIOUS MIND</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+          <span class="marquee-item caption">Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>LIKE A SCIENCE MUSEUM...BUT FOR EVERYONE</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span>Bucharest Applied STEAM Museum<span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span><b>A SCIENCE MUSEUM FOR THE CURIOUS MIND</b><span style="color:rgba(0,0,0,0.4);"> &nbsp;·&nbsp; </span></span>
+        </div>
+      </div>
       <hr><br>
       <h1 style="line-height: 0.85;">BASM</h1>
       <br><hr>
@@ -62,15 +59,16 @@
         <div class="column-unit">
           <b>Who is BASM?</b> The Bucharest Applied STEAM Museum. STEAM – Science, Technology, Engineering, Art, Math – is a methodology which explains many of the connections in the world we live in. A world in which everyone can learn anything. We believe in the unspoken magic of science centers and that Bucharest needs a modern one now, more than ever. That's why we decided to build one.<br><br>
           <span style="color:rgba(0,0,0,0.85);">
-            <b>Mission!</b> To engage curiosity, smudge T-Shirts, blister fingertips... through the intersection of Science, Technology, Engineering, Art &amp; Math, through community tinkering, free experimentation, and fearless inquiry.<br><br>
-            <b>POCKET LAB?</b> A gadget developed by us, BASM. Pocket Lab brings science discovery into every student's pencil box and transforms learning into an active experience inspired by their interests.
+            <b>Our Mission!</b> To engage curiosity, smudge T-Shirts, blister fingertips... through the intersection of Science, Technology, Engineering, Art &amp; Math, through community tinkering, free experimentation, and fearless inquiry.<br><br>
+            <b>What is POCKET LAB?</b> A gadget developed by us, BASM. Pocket Lab brings science discovery into every student's pencil box and transforms learning into an active experience inspired by their interests.
           </span><br>
           <i><br>But we can't do any of that alone.<br>
           If you think we could all grow stronger by teaming up, we'd love to hear from you.</i>
           <br><br>
           <a href="https://basmmuseum.substack.com/?utm_campaign=profile_chips" target="_blank"><span class="button-5-1" style="background: rgb(150, 205, 181);">PLAY</span></a>
           <br><br><br><br>
-          <b>Get in touch</b><br><br>
+          <b>So far, you can find us here:</b><br>
+          Get in touch<br><br>
           <a href="mailto:team@bucharest-steam.com">✉ Email</a><br>
           <a href="https://www.instagram.com/basm.museum/" target="_blank">◎ Instagram</a><br>
           <br>
@@ -91,15 +89,10 @@
     let current = 0;
     setInterval(() => {
       const next = (current + 1) % images.length;
-      images[next].classList.add('fading-in');
-      images[next].addEventListener('animationend', () => {
-        images[current].classList.remove('active');
-        images[next].classList.remove('fading-in');
-        images[next].classList.add('active');
-        current = next;
-      }, { once: true });
-    }, 1000);
+      images[current].classList.remove('active');
+      images[next].classList.add('active');
+      current = next;
+    }, 1500);
   </script>
-
 </body>
 </html>
